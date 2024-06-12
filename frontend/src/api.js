@@ -18,4 +18,17 @@ api.interceptors.request.use(
     (error) => {return Promise.reject(error);}
 );
 
+// Add a response interceptor
+api.interceptors.response.use(
+    (response) => {
+        // If the request was successful, just return the response
+        return response;
+    },
+    (error) => {
+        // If the request failed, log the error details
+        console.error('Axios error:', error.response);
+        return Promise.reject(error);
+    }
+);
+
 export default api;
